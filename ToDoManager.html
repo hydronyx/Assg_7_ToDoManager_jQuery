@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script src="jquery.min.js"></script>
+<script src="jquery.bpopup.min.js"></script>
+
+
+<script>
+$(document).ready(function(){
+
+  $("#addOne").click(function(){	
+	$("#addOne").hide(); 
+	$("#addTwo").show(); 	
+	$("#inputText").show();   
+	 
+	 
+  });
+
+  $("#addTwo").click(function(){
+    	
+	 $("#addTwo").hide();
+	 $("#inputText").hide();   
+   	 $("#addOne").show();    
+ 	
+
+
+	var listval=$("input:text").val();
+
+	if (listval==null || listval=="")
+ 	 {  	
+		alert("Value Must Be Given To Add");  
+ 	 }
+	else {
+		$("#blanklist").append('<li><a href="javascript:void(0);">' + listval + '</a></li>');	
+	     }
+		 
+		 
+		$(document.body).on('click', 'a' , function ()
+		{   		   
+			$('#popupBox').bPopup();	
+			
+			$(document.body).on('click', 'popup_Add' , function ()
+					{   		   
+						alert("hi");	
+					});
+					
+		});
+		
+		
+	
+  });
+});
+
+</script>
+</head>
+
+
+<body>	
+
+<h2 align=center> TO DO MANAGER </h2> 
+
+<table border="1" width="800" align=center height=500>
+
+<tr>
+	<td width="70%"> 
+	
+		<h3 align=center> The Subtasks Are : </h3> 	  
+			<div id=blankDiv >
+				<ol id=blanklist>
+				    
+						<div id=blankPopupDiv>
+							<ol id=blankPopupList>
+								
+							</ol>	  
+						</div>
+					
+				</ol>
+			</div>
+	</td>
+
+	<td>
+
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter the Main Tasks.</h3>	
+			<div id=divOne align=right >
+				<input type="button" value="Add" id=addOne style="height: 30px; width: 70px;"  >
+			</div>
+
+			<div id=divTwo align=right >
+				<input type="text"  name="myText" id=inputText style="height: 25px; width: 150px;  display:none" >
+				<input type="button" value="Add" id=addTwo style="height: 30px; width: 70px; display:none"  >
+			</div>
+	</td>
+</tr>
+</table>
+
+
+
+<div id="popupBox" title="Add Subtasks" style="display:none ; " >
+
+	<table border="2" width="900"  height="600" style="position:fixed; top:50px; background-color:grey;left:250px;" >
+	 
+	<tr>
+	   <td align=right>
+	   
+		<input type="text" id="popup_Text">
+		<input type="button" id="popup_Add"     value="Add" >
+		<input type="button" id="popup_Edit"    value="Edit" >
+		<input type="button" id="popup_Delete"  value="Delete" >
+	   </td>
+	  </tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
